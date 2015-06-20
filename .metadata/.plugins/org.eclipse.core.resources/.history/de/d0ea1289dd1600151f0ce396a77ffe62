@@ -1,0 +1,37 @@
+package ba.bitcamp.homeworkInheritance.task01;
+
+import java.util.Arrays;
+
+public class CampStringBuilder {
+
+	private char[] characters;
+
+	public CampStringBuilder(char[] characters) {
+		super();
+		this.characters = characters;
+	}
+	
+	
+
+	
+	public void append(Object o){
+		
+		char[] strChar = new char[characters.length + o.toString().length()];
+		
+		for (int i = 0; i < strChar.length; i++) {
+			for (int j = 0; j < characters.length; j++) {
+				if (i == j) {
+					strChar[i] = characters[j];
+				}
+				
+			}
+//			for (int j = 0; j < strChar.length; j++) {
+//				strChar[i] = o.toString().charAt(j);
+//			}
+		}
+		
+		System.out.println(Arrays.toString(strChar));
+		
+	}
+	
+}

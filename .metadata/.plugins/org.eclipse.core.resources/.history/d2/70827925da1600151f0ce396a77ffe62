@@ -1,0 +1,206 @@
+package ba.bitcamp.homeworkInheritance.task05;
+
+public class Date {
+
+	/*
+	 * Declaring properties of date
+	 */
+	private int day;
+	private int month;
+	private int year;
+
+	/**
+	 * Constructor that has one parameter and two default one.
+	 * 
+	 * @param day
+	 */
+	public Date(int day) {
+		this.day = day;
+		this.month = 1;
+		this.year = 1;
+	}
+
+	/**
+	 * Constructor that has two parameters and one default.
+	 * 
+	 * @param day
+	 * @param month
+	 */
+	public Date(int day, int month) {
+		this.day = day;
+		this.month = month;
+		this.year = 1;
+	}
+
+	/**
+	 * Constructor that has three parameters.
+	 * 
+	 * @param day
+	 * @param month
+	 * @param year
+	 */
+	public Date(int day, int month, int year) {
+		this.day = day;
+		this.month = month;
+		this.year = year;
+	}
+
+	/**
+	 * Prints date in format day.month.year
+	 */
+	public String toString() {
+		String s = "";
+		if (day < 10) {
+			s += "0" + day + ".";
+		} else {
+			s += day + ".";
+		}
+		if (month < 10) {
+			s += "0" + month + ".";
+		} else {
+			s += month + ".";
+		}
+		if (year < 10) {
+			s += "0" + year;
+		} else {
+			s += year;
+		}
+		return s;
+
+	}
+
+	/**
+	 * Checks if two dates are same.
+	 * 
+	 * @param d
+	 * @return True if they are equal and false if not.
+	 */
+	public boolean equal(Date d) {
+		return this.day == d.day && this.month == d.month
+				&& this.year == d.year;
+	}
+
+	/*
+	 * Get and set methods
+	 */
+	public int getDay() {
+		return day;
+	}
+
+	public int getMonth() {
+		return month;
+	}
+
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+
+	/**
+	 * Changes the day in the date.
+	 * 
+	 * @param day
+	 *            - Day that user want to set.
+	 */
+	public void setDay(int day) {
+
+		// Calling method daysOfMonth and checking if the inputed day is in the
+		// right range.
+		daysOfMonth(day, month);
+
+		this.day = day;
+	}
+
+	/**
+	 * Changes the month in the date.
+	 * 
+	 * @param month
+	 *            - Month that user want to set.
+	 */
+	public void setMonth(int month) {
+
+		// Checking if the inputed month is in the right range
+		if (month < 1 || month > 12) {
+			throw new NumberFormatException();
+		}
+
+		// Calling method daysOfMonth and checking if the inputed month
+		// corresponds to days in date.
+		daysOfMonth(day, month);
+
+		this.month = month;
+	}
+
+	/**
+	 * Calculating if the year is leap year.
+	 * 
+	 * @param day
+	 */
+	public void isLeapYear(int day) {
+		// Creating variable that will check if the year in the date is leap
+		// year.
+		boolean leapYear = ((this.year % 4 == 0) && (this.year % 100 != 0))
+				|| (this.year % 400 == 0);
+		// If it is leap year february has 29 days
+		if (leapYear) {
+			if (day < 1 || day > 29) {
+				throw new NumberFormatException();
+			}
+		} else {
+			if (day < 1 || day > 28) {
+				throw new NumberFormatException();
+			}
+		}
+	}
+
+	/**
+	 * Calculating which month has 31, which 30 and which 28/29 days.
+	 * 
+	 * @param day
+	 * @param month
+	 */
+	public void daysOfMonth(int day, int month) {
+		// These months have 31 days
+		if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8
+				|| month == 10 || month == 12) {
+			if (day < 1 || day > 31) {
+				throw new NumberFormatException();
+			}
+			// These months have 30 days
+		} else if (month == 4 || month == 6 || month == 9 || month == 11) {
+			if (day < 1 || day > 30) {
+				throw new NumberFormatException();
+			}
+			// These month has 28/29 days
+		} else if (month == 2) {
+			isLeapYear(day);
+		}
+	}
+	
+	
+	public void dayPassed(){
+		
+		if (day == 31 && (month == 1 || month == 3 || month == 5 || month == 7 || month == 8
+				|| month == 10 || month == 12)) {
+			day = 1;
+			month++;
+		} else if (day == 30 && (month == 4 || month == 6 || month == 9 || month == 11)) {
+			day = 1;
+			month++;
+		} else {
+			day++;
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+
+}

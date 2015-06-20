@@ -1,0 +1,169 @@
+package ba.bitcamp.homeworkInheritance.task05;
+
+public class Date {
+
+	/*
+	 * Declaring properties of date
+	 */
+	private int day;
+	private int month;
+	private int year;
+
+	/**
+	 * Constructor that has one parameter and two default one.
+	 * 
+	 * @param day
+	 */
+	public Date(int day) {
+		this.day = day;
+		this.month = 1;
+		this.year = 1;
+	}
+
+	/**
+	 * Constructor that has two parameters and one default.
+	 * 
+	 * @param day
+	 * @param month
+	 */
+	public Date(int day, int month) {
+		this.day = day;
+		this.month = month;
+		this.year = 1;
+	}
+
+	/**
+	 * Constructor that has three parameters.
+	 * 
+	 * @param day
+	 * @param month
+	 * @param year
+	 */
+	public Date(int day, int month, int year) {
+		this.day = day;
+		this.month = month;
+		this.year = year;
+	}
+
+	/**
+	 * Prints date in format day.month.year
+	 */
+	public String toString() {
+		String s = "";
+		if (day < 10) {
+			s += "0" + day + ".";
+		} else {
+			s += day + ".";
+		}
+		if (month < 10) {
+			s += "0" + month + ".";
+		} else {
+			s += month + ".";
+		}
+		if (year < 10) {
+			s += "0" + year;
+		} else {
+			s += year;
+		}
+		return s;
+
+	}
+
+	/**
+	 * Checks if two dates are same.
+	 * 
+	 * @param d
+	 * @return True if they are equal and false if not.
+	 */
+	public boolean equal(Date d) {
+		return this.day == d.day && this.month == d.month
+				&& this.year == d.year;
+	}
+
+	/*
+	 * Get and set methods
+	 */
+	public int getDay() {
+		return day;
+	}
+
+	public void setDay(int day) {
+//		if (this.month == 1 || this.month == 3 || this.month == 5
+//				|| this.month == 7 || this.month == 8 || this.month == 10
+//				|| this.month == 12) {
+//			if (day < 1 || day > 31) {
+//				throw new NumberFormatException();
+//			}
+//		} else if (this.month == 4 || this.month == 6 || this.month == 9
+//				|| this.month == 11) {
+//			if (day < 1 || day > 30) {
+//				throw new NumberFormatException();
+//			}
+//		} else if (this.month == 2) {
+//			isLeapYear(day);
+//		}
+		dayOfMonth(day, month);
+		
+		this.day = day;
+	}
+
+	public int getMonth() {
+		return month;
+	}
+
+	public void setMonth(int month) {
+		if (month < 1 || month > 12) {
+			throw new NumberFormatException();
+		} else if (month == 4 || month == 6 || month == 9 || month == 11
+				&& day > 30) {
+			throw new NumberFormatException();
+		} else if (month == 2) {
+
+			isLeapYear(day);
+
+		}
+		//dayOfMonth(day);
+		this.month = month;
+
+	}
+
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+
+	public void isLeapYear(int day) {
+		boolean leapYear = ((this.year % 4 == 0) && (this.year % 100 != 0))
+				|| (this.year % 400 == 0);
+		if (leapYear) {
+			if (day < 1 || day > 29) {
+				throw new NumberFormatException();
+			}
+		} else {
+			if (day < 1 || day > 28) {
+				throw new NumberFormatException();
+			}
+		}
+	}
+	
+	public void dayOfMonth(int day, int month){
+		if (month == 1 || month == 3 || month == 5
+				|| month == 7 || month == 8 || month == 10
+				|| month == 12) {
+			if (day < 1 || day > 31) {
+				throw new NumberFormatException();
+			}
+		} else if (month == 4 || month == 6 || month == 9
+				|| month == 11) {
+			if (day < 1 || day > 30) {
+				throw new NumberFormatException();
+			}
+		} else if (month == 2) {
+			isLeapYear(day);
+		}
+	}
+
+}

@@ -1,0 +1,19 @@
+package ba.bitcamp.homeworkInheritance.task01;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		
+		char[] characters = {'p', 'o', 'i', 'n', 't'};
+		
+		CampStringBuilder cp = new CampStringBuilder(characters);
+		
+		cp.append("of point");
+		cp.prepend("of point");
+		
+
+	}
+	
+	
+}

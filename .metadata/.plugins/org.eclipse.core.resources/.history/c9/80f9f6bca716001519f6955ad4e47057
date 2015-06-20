@@ -1,0 +1,32 @@
+package ba.bitcamp.homeworkInheritance.task03;
+
+import ba.bitcamp.homeworkInheritance.task02.Author;
+
+public class Main {
+
+	public static void main(String[] args) {
+
+		Book[] books = new Book[10];
+
+		Author authorOne = new Author("Mesa Selimovic", "mesa@bitcam.ba", true);
+		Author authorTwo = new Author("Ivo Andric", "ivo@bitcamp.ba", true);
+		Author authorThree = new Author("Joanne Kathleen Rowling",
+				"joanne@bitcamp.ba", false);
+
+		Book bookOne = new Book("Avlija", 15.5, 3, authorOne);
+		Book bookTwo = new Book("Na drini cuprija", 12.60, 2, authorTwo);
+		Book bookThree = new Book("Harry Potter", 20, 1, authorThree);
+		
+		BookShop bs = new BookShop("Bicamp", books);
+		
+		bs.addBook(bookOne);
+		bs.addBook(bookThree);
+		bs.addBook(bookTwo);
+		bs.sellBook(bookThree);
+		bs.sellBook(bookOne);
+		bs.sellBook(bookTwo);
+		bs.printBooks();
+
+	}
+
+}

@@ -1,0 +1,37 @@
+package ba.bitcamp.homeworkInheritance.task05;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		Date d = new Date(10);
+		
+		System.out.println(d);
+		
+		d.setDay(28);
+		//d.dayPassed();
+		d.setMonth(2);
+		
+		
+		System.out.println(d);
+		Date d1 = new Date(25, 6);
+		
+		d1.setDay(30);
+		d1.dayPassed();
+		System.out.println(d1);
+		
+		Date d2 = new Date(7, 2, 1999);
+		
+		
+		d2.setYear(2000);
+		d2.setDay(28);
+		//d2.dayPassed();
+//		d2.monthPassed();
+		System.out.println(d2);
+		
+		
+
+		
+	}
+	
+}
