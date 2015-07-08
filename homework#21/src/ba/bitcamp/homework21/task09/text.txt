@@ -1,0 +1,5 @@
+##Task 1
+
+Napraviti GUI aplikaciju koja prikaže deset cifara na JFrame (od 0 do 9). Generisati trocifren broj pomocu tih deset cifara. Kada se generiše trocifren broj prikazati na ekran generisani broj i zatvoriti aplikaciju.
+
+Na primjeru ispod korisnik pritisne 1, pa 8, pa 9 što generiše trocfireni broj 189.
