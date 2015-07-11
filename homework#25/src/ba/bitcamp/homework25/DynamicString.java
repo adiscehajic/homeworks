@@ -219,4 +219,23 @@ public class DynamicString {
 		}
 	}
 
+	/*
+	 * Get and set methods.
+	 */
+	public String[] getMyArray() {
+		return myArray;
+	}
+
+	public void setMyArray(String[] myArray) {
+		this.myArray = myArray;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+	
 }
