@@ -38,10 +38,25 @@ public class SortedIntList {
 	/**
 	 * Returns the length of the list.
 	 * 
-	 * @return
+	 * @return Length of the list.
 	 */
 	public int getLength() {
-		return count;
+		return getLength(start);
+	}
+
+	/**
+	 * Returns the length of the list from the inputed node.
+	 * 
+	 * @param node
+	 *            - Starting node.
+	 * @return Length of the list.
+	 */
+	private int getLength(Node node) {
+		if (node == null) {
+			return 0;
+		} else {
+			return 1 + getLength(node.next);
+		}
 	}
 
 	/**
