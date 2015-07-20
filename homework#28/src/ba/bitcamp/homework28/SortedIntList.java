@@ -6,14 +6,12 @@ public class SortedIntList {
 	 * Declaring list.
 	 */
 	private Node start;
-	private int count;
-
+	
 	/**
 	 * Constructor.
 	 */
 	public SortedIntList() {
 		this.start = null;
-		this.count = 0;
 	}
 
 	/**
@@ -93,7 +91,6 @@ public class SortedIntList {
 				temp.setNext(newNode);
 			}
 		}
-		count++;
 	}
 
 	/**
@@ -141,7 +138,7 @@ public class SortedIntList {
 	 * @return
 	 */
 	public int[] toArray() {
-		int[] array = new int[count];
+		int[] array = new int[getLength()];
 		for (int i = 0; i < array.length; i++) {
 			array[i] = this.get(i);
 		}
