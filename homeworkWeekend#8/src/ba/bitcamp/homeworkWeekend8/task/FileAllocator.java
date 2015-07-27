@@ -144,11 +144,17 @@ public class FileAllocator extends JPanel {
 	private void fillList(String folder, JList list, DefaultListModel listModel) {
 		selectedToDelete = new File(selected.getPath() + "/" + folder);
 
-		for (int i = 0; i < selectedToDelete.list().length; i++) {
-			listModel.add(i, selectedToDelete.list()[i]);
+		if (selectedToDelete.isDirectory() == false) {
+			if (selectedToDelete.exists() == false) {
+				listModel.clear();
+			}
+		} else {
+			for (int i = 0; i < selectedToDelete.list().length; i++) {
+				listModel.add(i, selectedToDelete.list()[i]);
+			}
+			list.setVisibleRowCount(5);
+			list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		}
-		list.setVisibleRowCount(5);
-		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 	}
 
 	private class BrowseAction implements ActionListener {
